@@ -7,30 +7,42 @@ export const crearAutor = async (req,res)=>{
 
   res.json({respuesta:"Se creó correctamente"});
 }
-
 // funcion obtener todos autores
 export const obtenerAutores = async(req,res)=>{
   const autor = await Autor.find();
   res.json(autor);
+  
 }
 
 // funcion obtener autor 
-export const obtenerAutor = async (req,res)=>{
-  const {id} = req.params
+export const obtenerAutor =async  (req,res)=>{
+  const {id} = req.params;
 
-  const autor = await Autor.findById(id);
-  return res.json(autor);
+  Autor.findById(id)
+  .then((content)=>{
+    if(!content)
+      return res.json({error:"El autor no fue encontrado"})
+    return res.json(content);
+  })
+  .catch((error)=>{
+    console.error(error);
+    return res.json({error:"Ocurrió un error, inténtelo más tarde"})
+  });
+ 
+}
+
+// funcion actualizar 
+
+export const actualizarAutor = async (req,res)=>{
+  const {id} = req.params;
+  const autor = await Autor.findByIdAndUpdate({_id:id},{$set:req.body},{new:true});
+  return res.json({request: "El dato se actualizó correctamente"});
 }
 
 // funcion eliminar autor 
 export const eliminarAutor = (req,res)=>{
   
+  
   return res.json({})
 }
 
-// funcion actualizar 
-
-export const actualizarAutor = (req,res)=>{
-
-  return res.json({})
-}

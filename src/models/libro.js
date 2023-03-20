@@ -1,7 +1,7 @@
 // imports 
 import {Schema,model} from "mongoose"
 
-const libroSchema = ({
+const libroSchema = Schema({
   nombre: {type:String, unique: true},
   edicion: {type:Number},
   tipo: String,
@@ -9,6 +9,7 @@ const libroSchema = ({
 },{
   versionKey: false,
   timestamps: true,
+  strictPopulate: false
 });
 
 export default model("Libro",libroSchema)

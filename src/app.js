@@ -4,7 +4,7 @@ import cors from "cors"
 import {PORT} from "./config.js"
 
 import rutasAutor from "./routes/autor.routes.js"
-
+import rutasLibro from "./routes/libro.routes.js"
 
 
 // configuraciones 
@@ -20,6 +20,7 @@ app.use(cors());
 
 //routes 
 app.use("/api",rutasAutor)
+app.use("/api",rutasLibro)
 
 // templates 
 

@@ -7,6 +7,7 @@ const autorSchema = Schema({
 },{
     versionKey: false,
     timestamps: true,
+    strictPopulate: false
 });
 
 export default model("Autor",autorSchema);
