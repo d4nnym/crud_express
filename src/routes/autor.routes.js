@@ -9,6 +9,8 @@ router.post("/autor",crearAutor);
 router.get("/autor",obtenerAutores);
 router.get("/autor/:id",obtenerAutor);
 router.put("/autor/:id",actualizarAutor);
+
+
 // get
 /* crear autor 
 "/api/cliente 

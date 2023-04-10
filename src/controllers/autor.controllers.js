@@ -32,17 +32,21 @@ export const obtenerAutor =async  (req,res)=>{
 }
 
 // funcion actualizar 
-
 export const actualizarAutor = async (req,res)=>{
   const {id} = req.params;
   const autor = await Autor.findByIdAndUpdate({_id:id},{$set:req.body},{new:true});
+
+  
   return res.json({request: "El dato se actualizó correctamente"});
 }
 
 // funcion eliminar autor 
-export const eliminarAutor = (req,res)=>{
-  
-  
-  return res.json({})
+export const eliminarAutor = async (req,res)=>{
+  const {id} = req.params;
+  const autor = await Autor.findByIdAndDelete(id);
+  return res.json({respuesta:"Se eliminó correctamente"});
 }
+
+
+
 
